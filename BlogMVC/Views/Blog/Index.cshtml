@@ -1,0 +1,50 @@
+﻿@model List<BlogMVC.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Blog de TI</h2>
+
+<p>
+ 
+    @Html.ActionLink("Crear un nuevo Post", "Create")|
+</p>
+<table class="table">
+    <thead>
+        <tr>
+          
+            <th scope="col">Titulo</th>
+            <th scope="col">Contenido</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Fecha</th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+    </tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contenido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoriaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPost)
+            </td>
+            <td>
+                @Html.ActionLink("Leer Post", "Leer", new { Id = item.Id }) |
+                @Html.ActionLink("Editar", "Edit", new { Id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { Id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
